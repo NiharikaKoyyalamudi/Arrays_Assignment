@@ -1,0 +1,38 @@
+import java.util.*;
+
+public class ArrayFrequency {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the size of super set array: ");
+        int sizeSuperSet = input.nextInt();
+        int[] arrSuperSet = new int[sizeSuperSet];
+        System.out.println("Enter the elements of super set array: ");
+        for (int i = 0; i < sizeSuperSet; i++) {
+            arrSuperSet[i] = input.nextInt();
+        }
+        System.out.print("Enter the size of subset array: ");
+        int sizeSubSet = input.nextInt();
+        int[] arrSubSet = new int[sizeSubSet];
+        System.out.println("Enter the elements of subset array: ");
+        for (int i = 0; i < sizeSubSet; i++) {
+            arrSubSet[i] = input.nextInt();
+        }
+        HashMap<Integer, Integer> frequencyMap = new HashMap<Integer, Integer>();
+        for (int i = 0; i < sizeSuperSet; i++) {
+            if (frequencyMap.containsKey(arrSuperSet[i])) {
+                frequencyMap.put(arrSuperSet[i], frequencyMap.get(arrSuperSet[i]) + 1);
+            } else {
+                frequencyMap.put(arrSuperSet[i], 1);
+            }
+        }
+        System.out.println("Frequencies of elements in the subset array:");
+        for (int i = 0; i < sizeSubSet; i++) {
+            int element = arrSubSet[i];
+            if (frequencyMap.containsKey(element)) {
+                System.out.println("Frequency of " + element + ": " + frequencyMap.get(element));
+            } else {
+                System.out.println("Frequency of " + element + ": 0");
+            }
+        }
+    }
+}
